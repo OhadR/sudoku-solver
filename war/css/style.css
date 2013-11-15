@@ -1,0 +1,49 @@
+HTML{ 
+scrollbar-face-color:#666666; 
+scrollbar-arrow-color:#CCCCCC; 
+scrollbar-track-color:#CCCCCC; 
+scrollbar-shadow-color:#000000; 
+scrollbar-highlight-color:#CCCCCC; 
+scrollbar-3dlight-color:#CCCCFF; 
+scrollbar-darkshadow-Color:#000000; 
+}
+
+A:link { COLOR: #000000; background-color: transparent; text-decoration: none}
+A:visited { COLOR: #000000; background-color: transparent; text-decoration: none}
+A:active { COLOR: #000000; background-color: transparent;  text-decoration: none }
+A:hover { COLOR: #000000; background-color: transparent;  text-decoration: underline }
+
+FORM{margin:0;}
+
+.i2 
+{
+	text-align:center;
+	z-index:1;
+	background-color:transparent;
+	font-size:18pt;
+	position:relative;
+	left:1px;
+	top:2px;
+	width:24pt ;
+	border:0
+}
+
+.cpad 
+{
+	text-align:left;
+	z-index:2;
+	padding-left:1;
+	padding-top:1;
+	background-color:transparent;
+	font-size:7pt;
+	position:absolute;
+	left:1px;
+	top:-4px; 
+	height:13;
+	border:0
+}
+
+h1
+{
+	margin-bottom: 0
+}

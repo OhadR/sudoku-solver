@@ -1,0 +1,250 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- The HTML 4.01 Transitional DOCTYPE declaration-->
+<!-- above set at the top of the file will set     -->
+<!-- the browser's rendering engine into           -->
+<!-- "Quirks Mode". Replacing this declaration     -->
+<!-- with a "Standards Mode" doctype is supported, -->
+<!-- but may lead to some differences in layout.   -->
+
+<html>
+	
+<head>
+	<link rel="stylesheet" href="./css/style.css" type="text/css" />
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.2.js"></script>
+	<script type="text/javascript" src="./javascript/solver.js"></script>
+	<title>Sudoku Solver</title>
+</head>
+
+<body onLoad="OnLoad();">
+	<center>
+
+	<div>
+		<img src="http://solve-suduku.appspot.com/pictures/solver_chiller.jpg" width="256" height="52" alt="The Sudoku Solver" title="The Sudoku Solver" border="0" />
+	</div>
+
+	<!-- h1>Sudoku Solver</h1-->
+	<br>This amazing application will solve youe sudoku for you!
+	<br>All you have to do is to enter the given number <b>in the right place</b>, and click on 
+	<br>the "solve" button.
+	<br>Enjoy.
+	<br><img src="http://solve-suduku.appspot.com/pictures/ohadRedlich_chiller.jpg" width="180" height="20" alt="Ohad Redlich" title="Ohad Redlich" border="0" />
+	<!-- br><small>(c) Ohad Redlich, 2010</small-->
+	<br><br>
+	
+	<!-- the 'wrapper' table contains the shadows, and the main table: -->
+	<table width="1%" height="1%" border="0" cellpadding="0" cellspacing="0">		
+		<tr>
+		<td>
+	
+		<table width="70%" cellpadding="0" cellspacing="2" bgcolor="#000000">
+			<tr>			<!-- in the big table, each TR contains 3 TDs where each one is a table 3x3 -->
+				<td>
+				<table width="100%" cellpadding="0" cellspacing="2" bgcolor="#CCCCCC">
+					<tr bgcolor="#FFFFFF">
+						<td id="cell1"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_00"></td>
+						<td id="cell2" bgcolor="#E5E5E5"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_01"></td>
+						<td id="cell3" bgcolor="#E5E5E5"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_02"></td>
+					</tr>
+					<tr bgcolor="#FFFFFF">
+						<td id="cell10"><input type="text" class="i2" size="1" maxlength="1" name="c1" onKeyPress="return isValidNumber(event)" id="_10"></td>
+						<td id="cell11" bgcolor="#E5E5E5"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_11"></td>
+						<td id="cell12" bgcolor="#E5E5E5"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_12"></td>
+					</tr>
+					<tr bgcolor="#FFFFFF">
+						<td id="cell19"><input type="text" class="i2" size="1" maxlength="1" name="c1" onKeyPress="return isValidNumber(event)" id="_20"></td>
+						<td id="cell20" bgcolor="#E5E5E5"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_21"></td>
+						<td id="cell21" bgcolor="#E5E5E5"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_22"></td>
+					</tr>
+				</table>
+				</td>
+	
+				<td>
+				<table width="100%" cellpadding="0" cellspacing="2" bgcolor="#CCCCCC">
+					<tr bgcolor="#FFFFFF">
+						<td id="cell1"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_03"></td>
+						<td id="cell2"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_04"></td>
+						<td id="cell3"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_05"></td>
+					</tr>
+					<tr bgcolor="#FFFFFF">
+						<td id="cell10"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_13"></td>
+						<td id="cell11"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_14"></td>
+						<td id="cell12"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_15"></td>
+					</tr>
+					<tr bgcolor="#FFFFFF">
+						<td id="cell19"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_23"></td>
+						<td id="cell20"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_24"></td>
+						<td id="cell21"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_25"></td>
+					</tr>
+				</table>
+				</td>
+	
+				<td>
+				<table width="100%" cellpadding="0" cellspacing="2" bgcolor="#CCCCCC">
+					<tr bgcolor="#FFFFFF">
+						<td id="cell1"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_06"></td>
+						<td id="cell2"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_07"></td>
+						<td id="cell3"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_08"></td>
+					</tr>
+					<tr bgcolor="#FFFFFF">
+						<td id="cell10"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_16"></td>
+						<td id="cell11"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_17"></td>
+						<td id="cell12"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_18"></td>
+					</tr>
+					<tr bgcolor="#FFFFFF">
+						<td id="cell19"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_26"></td>
+						<td id="cell20"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_27"></td>
+						<td id="cell21"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_28"></td>
+					</tr>
+				</table>
+				</td>
+			</tr>
+	
+			<tr>		<!-- second TR: another 3 TDs where each one is a table 3x3 -->
+				<td>
+				<table width="100%" cellpadding="0" cellspacing="2" bgcolor="#CCCCCC">
+					<tr bgcolor="#FFFFFF">
+						<td id="cell1"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_30"></td>
+						<td id="cell2"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_31"></td>
+						<td id="cell3"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_32"></td>
+					</tr>
+					<tr bgcolor="#FFFFFF">
+						<td id="cell10"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_40"></td>
+						<td id="cell11"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_41"></td>
+						<td id="cell12"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_42"></td>
+					</tr>
+					<tr bgcolor="#FFFFFF">
+						<td id="cell19"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_50"></td>
+						<td id="cell20"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_51"></td>
+						<td id="cell21"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_52"></td>
+					</tr>
+				</table>
+				</td>
+	
+				<td>
+				<table width="100%" cellpadding="0" cellspacing="2" bgcolor="#CCCCCC">
+					<tr bgcolor="#FFFFFF">
+						<td id="cell1"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_33"></td>
+						<td id="cell2"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_34"></td>
+						<td id="cell3"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_35"></td>
+					</tr>
+					<tr bgcolor="#FFFFFF">
+						<td id="cell10"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_43"></td>
+						<td id="cell11"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_44"></td>
+						<td id="cell12"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_45"></td>
+					</tr>
+					<tr bgcolor="#FFFFFF">
+						<td id="cell19"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_53"></td>
+						<td id="cell20"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_54"></td>
+						<td id="cell21"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_55"></td>
+					</tr>
+				</table>
+				</td>
+	
+				<td>
+				<table width="100%" cellpadding="0" cellspacing="2" bgcolor="#CCCCCC">
+					<tr bgcolor="#FFFFFF">
+						<td id="cell1"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_36"></td>
+						<td id="cell2"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_37"></td>
+						<td id="cell3"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_38"></td>
+					</tr>
+					<tr bgcolor="#FFFFFF">
+						<td id="cell10"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_46"></td>
+						<td id="cell11"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_47"></td>
+						<td id="cell12"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_48"></td>
+					</tr>
+					<tr bgcolor="#FFFFFF">
+						<td id="cell19"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_56"></td>
+						<td id="cell20"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_57"></td>
+						<td id="cell21"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_58"></td>
+					</tr>
+				</table>
+				</td>
+			</tr>
+	
+			<tr>		<!-- 3rd TR: another 3 TDs where each one is a table 3x3 -->
+				<td>
+				<table width="100%" cellpadding="0" cellspacing="2" bgcolor="#CCCCCC">
+					<tr bgcolor="#FFFFFF">
+						<td id="cell1"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_60"></td>
+						<td id="cell2"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_61"></td>
+						<td id="cell3"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_62"></td>
+					</tr>
+					<tr bgcolor="#FFFFFF">
+						<td id="cell10"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_70"></td>
+						<td id="cell11"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_71"></td>
+						<td id="cell12"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_72"></td>
+					</tr>
+					<tr bgcolor="#FFFFFF">
+						<td id="cell19"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_80"></td>
+						<td id="cell20"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_81"></td>
+						<td id="cell21"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_82"></td>
+					</tr>
+				</table>
+				</td>
+	
+				<td>
+				<table width="100%" cellpadding="0" cellspacing="2" bgcolor="#CCCCCC">
+					<tr bgcolor="#FFFFFF">
+						<td id="cell1"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_63"></td>
+						<td id="cell2"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_64"></td>
+						<td id="cell3"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_65"></td>
+					</tr>
+					<tr bgcolor="#FFFFFF">
+						<td id="cell10"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_73"></td>
+						<td id="cell11"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_74"></td>
+						<td id="cell12"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_75"></td>
+					</tr>
+					<tr bgcolor="#FFFFFF">
+						<td id="cell19"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_83"></td>
+						<td id="cell20"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_84"></td>
+						<td id="cell21"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_85"></td>
+					</tr>
+				</table>
+				</td>
+	
+				<td>
+				<table width="100%" cellpadding="0" cellspacing="2" bgcolor="#CCCCCC">
+					<tr bgcolor="#FFFFFF">
+						<td id="cell1"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_66"></td>
+						<td id="cell2"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_67"></td>
+						<td id="cell3"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_68"></td>
+					</tr>
+					<tr bgcolor="#FFFFFF">
+						<td id="cell10"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_76"></td>
+						<td id="cell11"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_77"></td>
+						<td id="cell12"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_78"></td>
+					</tr>
+					<tr bgcolor="#FFFFFF">
+						<td id="cell19"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_86"></td>
+						<td id="cell20"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_87"></td>
+						<td id="cell21"><input type="text" class="i2" size="1" maxlength="1" onKeyPress="return isValidNumber(event)" id="_88"></td>
+					</tr>
+				</table>
+				</td>
+			</tr>
+		</table>
+		
+		</td>
+		<td valign="bottom"><img src="pictures/board_image_02.gif" width="8" height="100%">
+		</td>
+		</tr>
+
+		<tr>		<!-- second row in the 'wrapper' table: draw the shadown down the puzzle -->
+	         <td> <img src="pictures/board_image_03.gif" width="320" height="9"></td>
+	         <td valign="top"> <img src="pictures/board_image_04.gif" width="8" height="9"></td>
+	    </tr>
+	</table>
+
+
+	<br><br>			
+	<div id="status" style="font-size: x-small;">
+		Welcome to the Sudoku Solver
+	</div>
+		
+	<input type="button" id="solve_and_reset" onclick="OnSolve();" value="Solve!" />
+	<input type="button" id="hint" onclick="OnGetHint();" value="Get Hint" />
+	
+	</center>
+</body>
+</html>

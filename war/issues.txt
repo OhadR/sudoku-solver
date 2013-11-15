@@ -1,0 +1,11 @@
+bug fixes:
+
+1. 	nextToInsert: i dont do "+1" anymore, coz in case the next one allready filled, i get stuck.
+ 	so i wrote a new method to calc the next number that should be inserted.
+2.	the servlet that creates SolutionItem, does not have to give in the ctor the "number to insert" anymore.
+	till now it gave already 1, but if 1 is filled, i got stuck. so i removed it from the ctor, and before
+	i put the first (the input) puzzle on the stuck, i calc the next number that should be inserted.
+	As a result of "cleaning" the ctor, it helped me getting rid of the "NA" (-1) constant that i had 
+	to create when i create a new SolutionItem in insertNumberToPuzzle().  
+3.	BUGFIX: after inserting a number, if "it is not finished", then instead of putting y=0, i put there
+	y=-1, becoz after popping, i increment, so i have to put y=-1 so after the inc i will start from 0.
