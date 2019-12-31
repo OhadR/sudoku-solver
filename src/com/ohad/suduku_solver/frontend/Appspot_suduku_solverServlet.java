@@ -18,6 +18,8 @@ public class Appspot_suduku_solverServlet extends HttpServlet
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 	throws IOException 
 	{
+        System.out.println("doGet");
+        
 	    resp.setContentType("text/plain");
 
 	    PrintWriter writer = resp.getWriter();

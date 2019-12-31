@@ -1,4 +1,4 @@
-var backend_url = '/suduku_solver';
+var backend_url = './suduku_solver';
 var SOLVE 	= 'Solve!';
 var BACK	= 'Back';
 
@@ -31,6 +31,9 @@ function OnSolve()
 			success: function(response)
 			{
 				populateResult(response);
+			},
+			error: function(jqXHR, textStatus, errorThrown){
+				alert('could not set data. ' + errorThrown)
 			}
 		});
 
